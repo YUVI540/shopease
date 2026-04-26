@@ -1,1 +1,25 @@
+# Backend
+backend/target/
+backend/.mvn/
+*.class
+*.jar
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+
+# Environment — keep .env.production OUT of git
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
 
