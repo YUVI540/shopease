@@ -1,0 +1,5 @@
+com\shopease\controller\CategoryController.class
+com\shopease\model\Category.class
+com\shopease\repository\CategoryRepository.class
+com\shopease\ShopEaseApplication.class
+com\shopease\service\CategoryService.class

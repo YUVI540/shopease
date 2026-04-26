@@ -40,58 +40,42 @@ public class OrderService {
         return orderRepository.findByStatus(status);
     }
 
-    @Transactional
-    public Order placeOrder(Long userId, List<Map<String, Object>> cartItems, String shippingAddress) {
+@Transactional
+public Order placeOrder(Long userId, List<Map<String, Object>> cartItems, String shippingAddress) {
 
-        User user = userService.getUserById(userId);
+    User user = userService.getUserById(userId);
 
-        Order order = new Order();
-        order.setUser(user);
-        order.setShippingAddress(shippingAddress);
-        order.setStatus("PLACED");
+    Order order = new Order();
+    order.setUser(user);
+    order.setShippingAddress(shippingAddress);
+    order.setStatus("PLACED");
 
-        BigDecimal total = BigDecimal.ZERO;
+    BigDecimal total = BigDecimal.ZERO;
 
-        for (Map<String, Object> item : cartItems) {
+    // Process items
+    for (Map<String, Object> item : cartItems) {
 
-            Long productId = Long.valueOf(item.get("productId").toString());
-            int quantity = Integer.parseInt(item.get("quantity").toString());
+        Long productId = Long.valueOf(item.get("productId").toString());
+        int quantity = Integer.parseInt(item.get("quantity").toString());
 
-            Product product = productService.getProductById(productId);
+        Product product = productService.getProductById(productId);
 
-            productService.reduceStock(productId, quantity);
+        productService.reduceStock(productId, quantity);
 
-            OrderItem orderItem = new OrderItem();
-            orderItem.setOrder(order);
-            orderItem.setProduct(product);
-            orderItem.setQuantity(quantity);
-            orderItem.setPrice(product.getPrice());
+        OrderItem orderItem = new OrderItem();
+        orderItem.setOrder(order);
+        orderItem.setProduct(product);
+        orderItem.setQuantity(quantity);
+        orderItem.setPrice(product.getPrice());
 
-            BigDecimal itemTotal = product.getPrice().multiply(BigDecimal.valueOf(quantity));
-            total = total.add(itemTotal);
-        }
-
-        order.setTotalAmount(total);
-
-        return orderRepository.save(order);
+        BigDecimal itemTotal = product.getPrice().multiply(BigDecimal.valueOf(quantity));
+        total = total.add(itemTotal);
     }
 
-    // ✅ ADD THIS METHOD
-    public Order updateOrderStatus(Long id, String status) {
-        Order order = getOrderById(id);
-        order.setStatus(status);
-        return orderRepository.save(order);
-    }
+    // ✅ SET TOTAL BEFORE SAVE
+    order.setTotalAmount(total);
 
-    // ✅ ADD THIS METHOD
-    public void cancelOrder(Long id) {
-        Order order = getOrderById(id);
-
-        if (order.getStatus().equals("SHIPPED") || order.getStatus().equals("DELIVERED")) {
-            throw new IllegalArgumentException("Cannot cancel this order");
-        }
-
-        order.setStatus("CANCELLED");
-        orderRepository.save(order);
-    }
+    // ✅ SAVE ONLY ONCE (FINAL)
+    return orderRepository.save(order);
+}
 }
