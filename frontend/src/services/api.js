@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = process.env.REACT_APP_API_URL || 'https://candid-queijadas-46a2bc.netlify.app/';
+const BASE_URL = process.env.REACT_APP_API_URL || 'https://shopease-ukcf.onrender.com/api';
 
 // ── Products ──────────────────────────────────────
 export const productService = {
