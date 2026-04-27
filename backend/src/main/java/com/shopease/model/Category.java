@@ -1,8 +1,13 @@
+
 package com.shopease.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.Data;
+
+@Data
+public class Product {
 
 @Entity
 @Table(name = "categories")
