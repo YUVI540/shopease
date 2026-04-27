@@ -25,5 +25,5 @@ public class OrderItem {
     private int quantity;
 
     @Column(nullable = false)
-    private BigDecimal price; // price at time of purchase
+    private BigDecimal price;
 }
