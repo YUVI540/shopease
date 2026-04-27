@@ -27,7 +27,7 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private String role = "USER"; // USER or ADMIN
+    private String role = "USER";
 
     @Column(updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
