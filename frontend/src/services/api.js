@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = process.env.REACT_APP_API_URL || 'https://shopease-ukcf.onrender.com';
+const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080/api';
 
 // ── Products ──────────────────────────────────────
 export const productService = {
@@ -35,4 +35,3 @@ export const orderService = {
     updateStatus: (id, status) => axios.put(`${BASE_URL}/orders/${id}/status`, { status }),
     cancel: (id) => axios.delete(`${BASE_URL}/orders/${id}/cancel`),
 };
-
