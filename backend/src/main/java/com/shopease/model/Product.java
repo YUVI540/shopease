@@ -10,32 +10,26 @@ import java.time.LocalDateTime;
 @Table(name = "products")
 @Data
 public class Product {
+public String getName() {
+    return name;
+}
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public String getDescription() {
+    return description;
+}
 
-    @NotBlank(message = "Product name is required")
-    @Column(nullable = false)
-    private String name;
+public Double getPrice() {
+    return price;
+}
 
-    @Column(columnDefinition = "TEXT")
-    private String description;
+public Integer getStockQuantity() {
+    return stockQuantity;
+}
 
-    @NotNull(message = "Price is required")
-    @DecimalMin(value = "0.0", inclusive = false, message = "Price must be greater than 0")
-    @Column(nullable = false)
-    private BigDecimal price;
+public String getImageUrl() {
+    return imageUrl;
+}
 
-    @Min(value = 0, message = "Stock cannot be negative")
-    private int stockQuantity;
-
-    private String imageUrl;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id")
-    private Category category;
-
-    @Column(updatable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
+public Category getCategory() {
+    return category;
 }
