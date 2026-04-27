@@ -26,7 +26,7 @@ public class Order {
     private BigDecimal totalAmount;
 
     @Column(nullable = false)
-    private String status = "PENDING"; // PENDING, CONFIRMED, SHIPPED, DELIVERED, CANCELLED
+    private String status = "PENDING";
 
     private String shippingAddress;
 
