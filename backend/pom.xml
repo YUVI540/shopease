@@ -28,6 +28,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+             <dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+</dependency>
+
         <!-- Spring Data JPA (Database ORM) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
