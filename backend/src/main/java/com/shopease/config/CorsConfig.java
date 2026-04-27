@@ -9,8 +9,12 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
-                .allowedOrigins("http://localhost:3000")  // React frontend
+                .allowedOrigins(
+                    "http://localhost:3000",
+                    "https://shopease-yuvi.netlify.app"
+                )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("*");
+                .allowedHeaders("*")
+                .allowCredentials(false);
     }
 }
