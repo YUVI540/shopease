@@ -5,10 +5,12 @@
 
 [build.environment]
   NODE_VERSION = "18.20.0"
-  NPM_VERSION = "9.8.1"
+  CI = "false"
+  SKIP_PREFLIGHT_CHECK = "true"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
 
