@@ -6,6 +6,14 @@ A complete e-commerce web application built with **Java Spring Boot**, **React**
 
 ---
 
+## 🚀 Live Demo
+
+[![Frontend](https://img.shields.io/badge/Frontend-Visit-blue?style=for-the-badge)](https://shopease-3-77er.onrender.com/)
+
+[![Backend API](https://img.shields.io/badge/API-Check-orange?style=for-the-badge)](https://shopease-ukcf.onrender.com/api/products)
+
+
+
 ## ✨ Features
 
 - 🛍️ Browse and search products by name or category
